@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+{% load static tailwind_tags %} {% load static %}
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Photos</title>
+  {% tailwind_css %}
+</head>
+
+<body>
+  <header class="bg-black p-4 text-white text-center">
+    <div class="container mx-auto">
+      <h1 class="text-3xl font-bold">Photoshare</h1>
+    </div>
+  </header>
+
+  <div class="flex w-full">
+    <div
+      className="sidebar-container"
+      class="flex flex-col w-1/5 border mx-20 mt-20 h-1/2"
+    >
+      <div className="categories" class="bg-slate-100 p-3">Categories</div>
+      <div className="category-item" class="p-4">games</div>
+      <div className="category-item" class="p-4">Food</div>
+      <div className="category-item" class="p-4">Food</div>
+
+      <button
+        className="add-photos-button"
+        class="bg-black hover:bg-slate-800 text-white font-bold m-3 py-2 px-4 rounded"
+      >
+        Add Photo
+      </button>
+    </div>
+
+    <div
+      className="photo-gallery container"
+      class="grid grid-cols-3 w-4/5 mt-20 gap-7 mr-20"
+    >
+      <div className="photo-item" class="flex flex-col border-2 rounded">
+        <img
+          src="{% static 'images/pch.jpg' %}"
+          alt="pch baby"
+          class="inline"
+        />
+        <div className="category-item" class="p-4">Category : Travel</div>
+        <button
+          className="view-button"
+          class="w-full hover:bg-gray-100 text-black font-bold py-2 px-4 rounded mx-auto border border-black"
+        >
+          View
+        </button>
+      </div>
+
+      <div className="photo-item" class="flex flex-col">
+        <img
+          src="{% static 'images/pch.jpg' %}"
+          alt="pch baby"
+          class="inline"
+        />
+        <div className="category-item" class="p-4">Category : Travel</div>
+        <button
+          className="view-button"
+          class="w-full hover:bg-gray-100 text-black font-bold py-2 px-4 rounded mx-auto border border-black"
+        >
+          View
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
