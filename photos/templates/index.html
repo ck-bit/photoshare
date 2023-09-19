@@ -22,16 +22,12 @@
       class="flex flex-col w-1/5 border mx-20 mt-20 h-1/2"
     >
       <div className="categories" class="bg-slate-100 p-3">Categories</div>
-      <div className="category-item" class="p-4">games</div>
-      <div className="category-item" class="p-4">Food</div>
-      <div className="category-item" class="p-4">Food</div>
+      {% for category in categories %}
+      <div className="category-item" class="p-4">{{category}}</div>
+      {% endfor %}
+  
+      <a class="btn flex justify-center bg-black hover:bg-gray-800 text-white m-3 py-2 px-4 rounded" href="{% url 'addPhoto' %}">Add Photo </a>
 
-      <button
-        className="add-photos-button"
-        class="bg-black hover:bg-slate-800 text-white font-bold m-3 py-2 px-4 rounded"
-      >
-        Add Photo
-      </button>
     </div>
 
     <div

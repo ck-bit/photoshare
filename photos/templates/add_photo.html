@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static tailwind_tags %} {% load static %}
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Photos</title>
+    {% tailwind_css %}
+  </head>
+
+  <body>
+    <header class="bg-black p-4 text-white text-center">
+      <div class="container mx-auto">
+        <h1 class="text-3xl font-bold">Photoshare</h1>
+      </div>
+    </header>
+
+    <div class="flex w-full">
+      <div id="content-container" class="flex flex-col w-1/4 mx-auto mt-12 pt-12">
+        <a
+          class="flex justify-center  bg-black hover:bg-gray-800 text-white m-3 py-2 px-4 rounded"
+          href="{% url 'index' %}"
+        >
+          Back to gallery
+      </a>
+        <div
+          class="flex flex-col border-2 border-slate-300 rounded justify-items-start"
+        >
+        <div class="flex flex-col m-4"> 
+          <p>Description</p>
+          <input placeholder="enter a description" />
+        </div>
+
+        <div class="flex flex-col m-4"> 
+          <p>Select a category</p>
+          <select>
+            <option>Select me</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col m-4"> 
+          <p> Create a new category </p>
+          <input placeholder="Create a category" />
+        </div>
+
+        <div class="flex flex-col m-4"> 
+          <p>Upload image </p>
+          <button class="w-1/4 bg-gray-200 hover:bg-gray-300 py-2 px-2 ">Choose File </button>
+        </div>
+
+         
+          <button class="bg-blue-500 hover:bg-blue-700 text-white m-3 py-2 px-4 rounded ">Submit</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
