@@ -23,7 +23,7 @@
     >
       <div className="categories" class="bg-slate-100 p-3">Categories</div>
       {% for category in categories %}
-      <div className="category-item" class="p-4">{{category}}</div>
+      <div className="category-item" class="p-4">{{category.name}}</div>
       {% endfor %}
   
       <a class="btn flex justify-center bg-black hover:bg-gray-800 text-white m-3 py-2 px-4 rounded" href="{% url 'addPhoto' %}">Add Photo </a>
@@ -34,35 +34,26 @@
       className="photo-gallery container"
       class="grid grid-cols-3 w-4/5 mt-20 gap-7 mr-20"
     >
-      <div className="photo-item" class="flex flex-col border-2 rounded">
-        <img
-          src="{% static 'images/pch.jpg' %}"
-          alt="pch baby"
-          class="inline"
-        />
-        <div className="category-item" class="p-4">Category : Travel</div>
-        <button
-          className="view-button"
-          class="w-full hover:bg-gray-100 text-black font-bold py-2 px-4 rounded mx-auto border border-black"
-        >
-          View
-        </button>
-      </div>
 
-      <div className="photo-item" class="flex flex-col">
+    {% for photo in photos %}
+      <div className="photo-item" class="flex flex-col border-2 rounded  ">
         <img
-          src="{% static 'images/pch.jpg' %}"
-          alt="pch baby"
-          class="inline"
+          src="{{ photo.image_file }}"
+          alt="{{ photo.description }}"
+          class="object-cover h-54 h-48 w-full object-top "
         />
-        <div className="category-item" class="p-4">Category : Travel</div>
-        <button
-          className="view-button"
-          class="w-full hover:bg-gray-100 text-black font-bold py-2 px-4 rounded mx-auto border border-black"
+        <p class="text-large font-bold px-4 mt-4"> {{photo.title}} </p>
+        <p class="text-slate-400 px-4"> {{photo.description}}</p>
+        <div className="category-item" class="p-4"> Category: {{ photo.category.name }} </div>
+        <a
+          class="w-full flex justify-center hover:bg-gray-100 text-black font-bold py-2 px-4 rounded mx-auto border border-black"
+          href="{% url 'getPhoto' photo.id %}"
         >
           View
-        </button>
+          </a>
       </div>
+      {% endfor %}
+
     </div>
   </div>
 </body>

@@ -17,41 +17,60 @@
     </header>
 
     <div class="flex w-full">
-      <div id="content-container" class="flex flex-col w-1/4 mx-auto mt-12 pt-12">
-        <a
-          class="flex justify-center  bg-black hover:bg-gray-800 text-white m-3 py-2 px-4 rounded"
-          href="{% url 'index' %}"
-        >
-          Back to gallery
-      </a>
-        <div
-          class="flex flex-col border-2 border-slate-300 rounded justify-items-start"
-        >
-        <div class="flex flex-col m-4"> 
-          <p>Description</p>
-          <input placeholder="enter a description" />
-        </div>
+      <div
+        id="content-container"
+        class="flex flex-col w-1/4 mx-auto mt-12 pt-12"
+      >
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
 
-        <div class="flex flex-col m-4"> 
-          <p>Select a category</p>
-          <select>
-            <option>Select me</option>
-          </select>
-        </div>
+          <a
+            class="flex justify-center w-1/2 bg-black hover:bg-gray-800 text-white m-3 py-2 px-4 rounded"
+            href="{% url 'index' %}"
+          >
+            Back to gallery
+          </a>
+          <div
+            class="flex flex-col border-2 border-slate-300 rounded justify-items-start"
+          >
+            <div class="flex flex-col m-4">
+              <p>Description</p>
+              <input
+                required
+                name="description"
+                id="description"
+                placeholder="Enter a description"
+              />
+            </div>
 
-        <div class="flex flex-col m-4"> 
-          <p> Create a new category </p>
-          <input placeholder="Create a category" />
-        </div>
+            <div class="flex flex-col m-4">
+              <p>Select a category</p>
+              <select id="select-category" name="select-category"  placeholder="Select a category">
+                <option value="none"> Select a category... </option>
+                {% for category in categories %}
+              
+                <option value="{{category.id}}"> {{ category.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-        <div class="flex flex-col m-4"> 
-          <p>Upload image </p>
-          <button class="w-1/4 bg-gray-200 hover:bg-gray-300 py-2 px-2 ">Choose File </button>
-        </div>
+            <div class="flex flex-col m-4">
+              <p>Create a new category</p>
+              <input name="create-category" id="create-category" cre placeholder="Enter a category" />
+            </div>
 
-         
-          <button class="bg-blue-500 hover:bg-blue-700 text-white m-3 py-2 px-4 rounded ">Submit</button>
-        </div>
+            <div class="flex flex-col m-4">
+              <label for="image">Select an image:</label>
+              <input required type="file" name="image_file" value="Choose File" id="image_file" />
+            </div>
+
+            <input
+              type="submit"
+              value="Submit"
+              class="w-1/2 bg-blue-500 hover:bg-blue-700 text-white m-3 py-2 px-4 rounded"
+            />
+          </div>
+        </form>
       </div>
     </div>
   </body>

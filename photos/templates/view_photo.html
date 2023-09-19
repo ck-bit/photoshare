@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static tailwind_tags %} {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Photos</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    <header class="bg-black p-4 text-white text-center">
+      <div class="container mx-auto">
+        <h1 class="text-3xl font-bold">Photoshare</h1>
+      </div>
+    </header>
+
+    <div id="photo-item" class="flex flex-col w-1/2 mx-auto mt-12">
+      <a
+        class="flex justify-center w-1/4 bg-black hover:bg-gray-800 text-white m-3 py-2 px-4 rounded"
+        href="{% url 'index' %}"
+      >
+        Back to gallery
+      </a>
+      <h1 class="text-3xl font-bold text-center mb-6">{{photo.title}}</h1>
+      <img src="{{photo.image_file.url}}" />
+      <p> Category: {{photo.category.name }}</p>
+      <p>{{photo.description}}</p>
+
+    </div>
+  </body>
+</html>
