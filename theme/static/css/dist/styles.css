@@ -857,6 +857,10 @@ select {
   height: 100vh;
 }
 
+.h-4 {
+  height: 1rem;
+}
+
 .w-1\/2 {
   width: 50%;
 }
@@ -875,6 +879,10 @@ select {
 
 .w-full {
   width: 100%;
+}
+
+.w-4 {
+  width: 1rem;
 }
 
 .border-collapse {

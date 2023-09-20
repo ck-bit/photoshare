@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"></html>
-{% load static tailwind_tags %} {% load static %}
+{% load static tailwind_tags %} 
+{% load static %}
 
 <head>
   <meta charset="UTF-8" />
@@ -22,8 +23,18 @@
       class="flex flex-col w-1/5 border mx-20 mt-20 h-1/2"
     >
       <div className="categories" class="bg-slate-100 p-3">Categories</div>
+      <a href="{% url 'index' %}" class="p-4"> All </a>
       {% for category in categories %}
-      <div className="category-item" class="p-4">{{category.name}}</div>
+      <div class="flex items-center"> 
+      <a href="{% url 'index' %}?category={{category.name}}" className="category-item" class="p-4">{{category.name}}</a>
+      <div>
+      <a href="{% url 'deleteCategory' category.id %}">
+      <img src="{% static 'C:\Users\Carson Kim\dev\photoshare\static\delete.svg' %}" class="w-4 h-4"> 
+      </div>
+
+    </div>
+
+
       {% endfor %}
   
       <a class="btn flex justify-center bg-black hover:bg-gray-800 text-white m-3 py-2 px-4 rounded" href="{% url 'addPhoto' %}">Add Photo </a>

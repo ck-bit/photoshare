@@ -10,15 +10,28 @@ from .serializers import PhotoSerializer
 def getCategories():
     return Category.objects.all()
 
-
 def index(request):
-   
-    photos = Photo.objects.all()
 
+    category = request.GET.get('category')
+    if category == None:
+        photos = Photo.objects.all()
+    else:
+        photos = Photo.objects.filter(category__name=category)
+    
     context={"categories": getCategories(),
              "photos": photos}
     
     return render(request, 'index.html', context=context)
+
+
+def deleteCategory(request, id):
+    print(request)
+    category = Category.objects.get(pk=id)
+    if not category: 
+        print('Category does not exist')
+    category.delete()
+    return redirect('index')
+    
 
 @api_view(['GET'])
 def getPhoto(request, id):
@@ -33,6 +46,7 @@ def addPhoto(request, id=0):
             "categories": getCategories(),
         }
 
+      
         return render(request, 'add_photo.html', context)
     
     if request.method == 'POST':
