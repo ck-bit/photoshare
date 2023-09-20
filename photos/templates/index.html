@@ -34,7 +34,10 @@
       className="photo-gallery container"
       class="grid grid-cols-3 w-4/5 mt-20 gap-7 mr-20"
     >
+    {% if not photos %}
 
+    <div class="text-3xl font-bold "> No photos yet!</div>
+    {% endif %}
     {% for photo in photos %}
       <div className="photo-item" class="flex flex-col border-2 rounded  ">
         <img

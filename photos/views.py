@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Photo, Category
+from .serializers import PhotoSerializer
 
 # Create your views here.
 
@@ -17,18 +18,13 @@ def index(request):
     context={"categories": getCategories(),
              "photos": photos}
     
-    print(photos[0].image_file)
-    
     return render(request, 'index.html', context=context)
 
 @api_view(['GET'])
 def getPhoto(request, id):
-    if request.method == 'GET':
-        photo = Photo.objects.get(id=id)
-        if not photo:
-            return Response(status=404)
-        context = {"photo": photo}
-        return render(request,'view_photo.html', context=context)
+    photo = get_object_or_404(Photo, pk=id)
+    context = {"photo": photo}
+    return render(request,'view_photo.html', context=context)
 
 @api_view(['GET', 'POST'])
 def addPhoto(request, id=0):
@@ -37,10 +33,30 @@ def addPhoto(request, id=0):
             "categories": getCategories(),
         }
 
-        print(context)
         return render(request, 'add_photo.html', context)
+    
     if request.method == 'POST':
-        print(request.POST)
-        print(request)
-        print(request.FILES)
-        return Response(status=200, data=request.POST)
+        data = request.data
+    
+        # process request data
+     
+        category = data['select-category']
+
+        if data['create-category'] != "":
+            category = Category.objects.create(name=data['create-category'])
+            category_key = category.pk
+        
+        seri_data = {
+            'title': data['title'],
+            'description': data['description'],
+            'image_file': data['image_file'],
+            'category': category_key
+        }
+
+        serializer = PhotoSerializer(data=seri_data)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('index')
+        else: 
+            data = {"message": "failed, invalid data."}
+            return Response(status=400, data=data)
