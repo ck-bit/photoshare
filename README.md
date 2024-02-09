@@ -82,7 +82,4 @@ We welcome contributions to PhotoShare! If you'd like to contribute, please fork
 PhotoShare is licensed under the MIT License.
 
 ## Contact
-
-Have questions or suggestions regarding PhotoShare? Reach out to us at photoshare@example.com. We value your feedback and look forward to hearing from you!
-
 Happy sharing your memories with PhotoShare! 📸✨
