@@ -1,5 +1,5 @@
 # PhotoShare: Your Personal Photo Sharing Platform
-
+![Photoshare](home-page.png)
 Welcome to PhotoShare, a dynamic and intuitive photo-sharing web application designed to streamline the management and sharing of your personal photo collections. With PhotoShare, organizing, categorizing, and accessing your cherished memories has never been easier. Built with cutting-edge technologies and a focus on user experience, PhotoShare offers a seamless and secure solution for storing and sharing your photos.
 
 ## Features
