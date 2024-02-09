@@ -22,14 +22,12 @@ With a responsive design, PhotoShare adapts seamlessly to different devices and 
 ## Technologies Stack
 
 - **Backend**: Django, Django REST Framework
-- **Frontend**: React, React Router
+- **Frontend**: React
 - **Database**: PostgreSQL
 - **Cloud Storage**: AWS S3
 - **Authentication**: JSON Web Tokens (JWT)
-- **Styling**: CSS, Bootstrap
-
-## Getting Started
-
+- **Styling**: CSS, Tailwind
+  
 ## Getting Started
 
 To experience PhotoShare firsthand, follow these simple steps:
