@@ -30,6 +30,8 @@ With a responsive design, PhotoShare adapts seamlessly to different devices and 
 
 ## Getting Started
 
+## Getting Started
+
 To experience PhotoShare firsthand, follow these simple steps:
 
 1. **Clone the Repository**: Clone the PhotoShare repository to your local machine.
@@ -37,16 +39,14 @@ To experience PhotoShare firsthand, follow these simple steps:
     git clone https://github.com/yourusername/photoshare.git
     ```
 
-2. **Install Dependencies**: Navigate to the project directory and install backend and frontend dependencies.
+2. **Install Dependencies**: Navigate to the project directory and install dependencies.
     ```bash
-    cd photoshare/backend
+    cd photoshare
     pip install -r requirements.txt
-
-    cd ../frontend
     npm install
     ```
 
-3. **Set Up Environment Variables**: Create a .env file in the backend directory and configure the necessary environment variables.
+3. **Set Up Environment Variables**: Create a .env file in the project root directory and configure the necessary environment variables.
     ```makefile
     DATABASE_URL=your_database_url
     AWS_ACCESS_KEY_ID=your_aws_access_key_id
@@ -55,23 +55,14 @@ To experience PhotoShare firsthand, follow these simple steps:
     DJANGO_SECRET_KEY=your_django_secret_key
     ```
 
-4. **Run Migrations**: Apply database migrations to set up the database schema.
+4. **Run Migrations & Start Servers**: Apply database migrations and start the backend and frontend servers.
     ```bash
     python manage.py migrate
-    ```
-
-5. **Run Backend Server**: Start the Django backend server.
-    ```bash
     python manage.py runserver
-    ```
-
-6. **Run Frontend Server**: In a separate terminal, navigate to the frontend directory and start the React frontend server.
-    ```bash
-    cd photoshare/frontend
     npm start
     ```
 
-7. **Access PhotoShare**: Open a web browser and navigate to http://localhost:3000 to access the PhotoShare application.
+5. **Access PhotoShare**: Open a web browser and navigate to http://localhost:3000 to access the PhotoShare application.
 
 ## Contributing
 
